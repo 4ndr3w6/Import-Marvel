@@ -21,7 +21,7 @@ Import-Module activedirectory
   
 #Update the path to where the .csv file is stored. 
 
-$ADUsers = Import-csv C:\marvel_users.csv
+$ADUsers = Import-csv C:\import-marvel\marvel_users.csv
 
 foreach ($User in $ADUsers)
 
