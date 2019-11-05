@@ -57,7 +57,7 @@ foreach ($User in $ADUsers)
 		
 		New-ADUser `
             -SamAccountName $Username `
-            -UserPrincipalName "$username@marvel.local" `
+            -UserPrincipalName "$username@windomain.local" `
             -Name "$firstname $lastname" `
             -GivenName $firstname `
             -Surname $lastname `
@@ -76,7 +76,15 @@ foreach ($User in $ADUsers)
         Write-Output "$username has been to the domain and added to the $identity group"
     }
 
-    setspn -a mjolnir/marvel.local marvel\thor #update domain to match enviroments
-    setspn -a mr3000/marvel.local marvel\ironman #update domain to match enviroments
+    setspn -a mjolnir/marvel.local windomain\thor #update domain to match enviroments
+    setspn -a mr3000/marvel.local windomain\ironman #update domain to match enviroments
+
+    Get-aduser thor | Set-ADAccountControl -AllowReversiblePasswordEncryption $true
+    Get-adsuer ironman | Set-ADAcccountControl -AccountNotDelegated $true
+    Get-aduser thanos | Set-ADAccountControl -doesnotrequirepreauth $true
+    Get-aduser thanos | Set-ADAccountControl -TrustedForDelegation $true
+    Get-aduser drstrange | Set-ADAccountControl -TrustedToAuthForDelegation $true
+    Get-aduser warmachine | Set-ADAccountControl -doesnotrequirepreauth $true
+    
 }
 Import-Marvel
