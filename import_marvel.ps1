@@ -85,6 +85,7 @@ foreach ($User in $ADUsers)
     Get-aduser thanos | Set-ADAccountControl -TrustedForDelegation $true
     Get-aduser drstrange | Set-ADAccountControl -TrustedToAuthForDelegation $true
     Get-aduser warmachine | Set-ADAccountControl -doesnotrequirepreauth $true
-    
+    Get-aduser ultron | Set-ADAccountControl -PasswordNeverExpires $true
+    Get-aduser gamora | Set-ADAccountControl-PasswordNotRequired $true
 }
 Import-Marvel
