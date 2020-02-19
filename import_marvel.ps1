@@ -80,12 +80,12 @@ foreach ($User in $ADUsers)
     setspn -a mr3000/marvel.local windomain\ironman #update domain to match enviroments
 
     Get-aduser thor | Set-ADAccountControl -AllowReversiblePasswordEncryption $true
-    Get-adsuer ironman | Set-ADAcccountControl -AccountNotDelegated $true
+    Get-aduser ironman | Set-ADAccountControl -AccountNotDelegated $true
     Get-aduser thanos | Set-ADAccountControl -doesnotrequirepreauth $true
     Get-aduser thanos | Set-ADAccountControl -TrustedForDelegation $true
     Get-aduser drstrange | Set-ADAccountControl -TrustedToAuthForDelegation $true
     Get-aduser warmachine | Set-ADAccountControl -doesnotrequirepreauth $true
     Get-aduser ultron | Set-ADAccountControl -PasswordNeverExpires $true
-    Get-aduser gamora | Set-ADAccountControl-PasswordNotRequired $true
+    Get-aduser gamora | Set-ADAccountControl -PasswordNotRequired $true
 }
 Import-Marvel
