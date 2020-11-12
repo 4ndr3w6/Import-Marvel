@@ -76,8 +76,8 @@ foreach ($User in $ADUsers)
         Write-Output "$username has been to the domain and added to the $identity group"
     }
 
-    setspn -a mjolnir/marvel.local windomain\thor #update domain to match enviroments
-    setspn -a mr3000/marvel.local windomain\ironman #update domain to match enviroments
+    setspn -a mjolnir/dc.windomain.local windomain\thor #update domain to match enviroments
+    setspn -a mr3000/dc.windomain.local windomain\ironman #update domain to match enviroments
 
     Get-aduser thor | Set-ADAccountControl -AllowReversiblePasswordEncryption $true
     Get-aduser ironman | Set-ADAccountControl -AccountNotDelegated $true
